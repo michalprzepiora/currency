@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -15,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "code",
     "mid"
 })
+@ToString
 public class Rate {
 
   @JsonProperty("currency")
@@ -25,6 +28,12 @@ public class Rate {
   private Double mid;
   @JsonIgnore
   private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+//  public Rate(String currency, String code, Double mid) {
+//    this.currency = currency;
+//    this.code = code;
+//    this.mid = mid;
+//  }
 
   @JsonProperty("currency")
   public String getCurrency() {
