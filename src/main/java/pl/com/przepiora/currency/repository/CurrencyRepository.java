@@ -11,6 +11,7 @@ import java.util.List;
 public class CurrencyRepository {
 
   private List<Rate> currencyRateList;
+  private String date;
   final static String URL_API_NBP = "http://api.nbp.pl/api/exchangerates/tables/a";
 
   public CurrencyRepository() {
@@ -18,6 +19,7 @@ public class CurrencyRepository {
     CurrencyNbpApi[] currencyNbpApi = restTemplate
         .getForObject(URL_API_NBP, CurrencyNbpApi[].class);
     currencyRateList = currencyNbpApi[0].getRates();
+    date = currencyNbpApi[0].getEffectiveDate();
     Rate rate = new Rate();
     rate.setCurrency("polski złoty");
     rate.setCode("PLN");
@@ -37,5 +39,9 @@ public class CurrencyRepository {
       }
     }
     throw new IllegalArgumentException("Code not found.");
+  }
+
+  public String getDate(){
+    return date;
   }
 }
