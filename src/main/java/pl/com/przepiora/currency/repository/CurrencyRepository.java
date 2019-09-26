@@ -12,7 +12,7 @@ public class CurrencyRepository {
 
   private List<Rate> currencyRateList;
   private String date;
-  final static String URL_API_NBP = "http://api.nbp.pl/api/exchangerates/tables/a";
+  private final static String URL_API_NBP = "http://api.nbp.pl/api/exchangerates/tables/a";
 
   public CurrencyRepository() {
     RestTemplate restTemplate = new RestTemplate();
